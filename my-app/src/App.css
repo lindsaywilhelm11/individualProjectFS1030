@@ -1,0 +1,181 @@
+.App {
+  text-align: center;
+}
+
+.homeHeading {
+  color: #004466;
+  text-align: center;
+  font-size: 1000%;
+  line-height: 200px;
+  height: 200px;
+}
+
+.contentHeader {
+  color: #004466;
+  text-align: center;
+}
+
+.homeSubHeading {
+  color: #004466;
+  font-size: 200%;
+  text-align: center;
+}
+.contentSubHeader {
+  color: #004466;
+  text-align: center;
+}
+
+.portfolioContent {
+  text-align: center;
+}
+
+.aboutContent {
+  text-align: center;
+}
+
+.resumeContent {
+  text-align: center;
+  list-style: none;
+}
+
+.contactContent {
+  text-align: center;
+}
+
+.loginContent {
+  text-align: center;
+}
+
+
+.button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border:0.1em solid #1a1c20;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family:'Roboto',sans-serif;
+  font-weight: 300;
+  color:#1a1c20;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+a.button:hover{
+  color:#000000;
+  background-color: #0099e0;
+  }
+
+  .navbar {
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      margin: 90px;
+  }
+
+  .contact-form {
+      background-color: #0099e0;
+      position: relative;
+      width: 20%;
+      display: inline-block;
+      margin-left: 550px;
+      text-align: center;
+  }
+
+  .imgContainerOne{
+      Display: flex;
+      Height: 40vh;
+      Width: 100vw; 
+      Align-Items: center;
+      Justify-Content: center;
+  }
+
+  .imgContainerTwo{
+      Display: flex;
+      Height: 25vh;
+      Width: 100vw; 
+      Align-Items: center;
+      Justify-Content: center;
+  }
+
+  .ediPhoto {
+      text-align: center;
+  }
+
+  .edinburghPhoto {
+      display: flex;
+    }
+    .edinburghPhoto:focus, .edinburghPhoto:hover {
+      animation: wobble 1s 1;
+    }
+
+    .helPhoto {
+      text-align: center;
+    }
+
+    .helsinkiPhoto {
+      display: block;
+    }
+    .helsinkiPhoto:focus, .helsinkiPhoto:hover {
+      animation: wobble 1s 1;
+    }
+
+    .irePhoto {
+      text-align: center;
+    }
+
+    .irelandPhoto {
+      display: block;
+    }
+    .irelandPhoto:focus, .irelandPhoto:hover {
+      animation: wobble 1s 1;
+    }
+
+    .morPhoto {
+      text-align: center;
+    }
+
+    .morainePhoto {
+      display: block;
+    }
+    .morainePhoto:focus, .morainePhoto:hover {
+      animation: wobble 1s 1;
+    }
+
+    .swePhoto {
+      text-align: center;
+    }
+
+    .swedenPhoto {
+      display: block;
+    }
+    .swedenPhoto:focus, .swedenPhoto:hover {
+      animation: wobble 1s 1;
+    }
+
+    .wasPhoto {
+      text-align: center;
+    }
+
+    .washingtonPhoto {
+      display: block;
+    }
+    .washingtonPhoto:focus, .washingtonPhoto:hover {
+      animation: wobble 1s 1;
+    }
+    
+    @keyframes wobble {
+      25% {
+        transform: rotate(15deg);
+      }
+      50% {
+        transform: rotate(-30deg);
+      }
+      75% {
+        transform: rotate(5deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
