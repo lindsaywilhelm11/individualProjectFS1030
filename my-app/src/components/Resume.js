@@ -48,6 +48,19 @@ const Resume = () => {
         <br />
         <br />
         <hr />
+
+        <h4>Add New Resume Item</h4>
+        <label>Company</label>
+        <input type="text" />
+        <label>Position</label>
+        <input type="text" />
+        <label>Location</label>
+        <input type="text" />
+        <label>Start Date</label>
+        <input type="date" />
+        <label>End Date</label>
+        <input type="date" />
+        <button>Add To Resume</button>
         
       </div>
     );
