@@ -57,8 +57,16 @@ const Portfolio = () => {
           </main>
           <br />
         <hr />
+
+        <h4>Add New Portfolio Item</h4>
+        <label>Location Name</label>
+        <input type="text" />
+        <label>Image</label>
+        <input type="file"/>
+        <button>Add To Portfolio</button>
         
-        
+
+
       </div>
     );
   };

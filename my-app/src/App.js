@@ -11,7 +11,6 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import Navigation from './components/Navigation';
 import Login from './components/Login';
-import ProtectedRoute from './components/ProtectedRoute'
 
 
 export class App extends Component {
@@ -51,7 +50,6 @@ export class App extends Component {
              <Route path="/resume" component={Resume}/>
              <Route path="/contact" component={Contact}/>
              <Route path="/login" component={Login}/>
-             <ProtectedRoute path="/users"></ProtectedRoute>
             <Route component={Error}/>
             <p>{this.state.data}</p>
            </Switch>

@@ -15,7 +15,7 @@ const Admin = () => {
     }
     useEffect(() => {
         const getData = async () => {
-            const response = await fetch('http://localhost:5000/contact_form/entries', {
+            const response = await fetch('http://localhost:3001/admin', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -47,7 +47,9 @@ const Admin = () => {
                     }
                 </tbody>
         </table>
+        
     )
+    
 }
 
 export default withRouter(Admin);
