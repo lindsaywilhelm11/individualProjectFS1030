@@ -27,7 +27,7 @@ export class App extends Component {
   }
     // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
   callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
+    const response = await fetch("/api/personal_site");
     const body = await response.json();
 
     if (response.status !== 200) {

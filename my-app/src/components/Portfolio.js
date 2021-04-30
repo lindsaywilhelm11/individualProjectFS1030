@@ -1,15 +1,26 @@
 import React from 'react';
-import edinburghPhoto from '../images/edinburghPhoto.jpg';
-import helsinkiPhoto from '../images/helsinkiPhoto.jpg';
-import irelandPhoto from '../images/irelandPhoto.jpg';
-import morainePhoto from '../images/morainePhoto.jpg';
-import swedenPhoto from '../images/swedenPhoto.jpg';
-import washingtonPhoto from '../images/washingtonPhoto.jpg';
+import { useState, useEffect } from "react";
 
  
 const Portfolio = () => {
+    const [portfolio, setPortfolio] = useState([]);
+
+    useEffect(() => {
+      async function fetchData() {
+        const res = await fetch("http://localhost:3001/api/personal_site");
+        res
+          .json()
+          .then((res) => setPortfolio(res))
+      }
+      fetchData();
+    }, []);
+    
+
     return (
         <div>
+          
+
+
         <title>Lindsay Wilhelm's Portfolio</title>
       
         
@@ -26,44 +37,21 @@ const Portfolio = () => {
         <p className="portfolioContent">Please enjoy some of my photography instead.</p>
         <main>
           <article className="imgContainerOne">
-          <section className="ediPhoto">
-          <img src={edinburghPhoto} alt="Edinburgh Castle" className="edinburghPhoto" height="200px" width="300px" />
-          <p>Edinburgh, Scotland</p>
+          {portfolio.map((portfolio) => (
+            <section className="ediPhoto" key={portfolio.portfolioID}>
+              <p>{portfolio.title}</p>
+              <p>{portfolio.publish_date}</p>
+              <img src={portfolio.image} alt={portfolio.title} className="edinburghPhoto" width="300px" height="200px" />
+              <p>{portfolio.description}</p>
           </section>
-          <section className="helPhoto">
-          <img src={helsinkiPhoto} alt="Helsinki" className="helsinkiPhoto" height="200px" width="300px" />
-          <p>Helsinki, Finland</p>
-          </section>
-          <section className="irePhoto">
-          <img src={irelandPhoto} alt="Cork, Ireland" className="irelandPhoto" height="200px" width="300px" />
-          <p>Cork, Ireland</p>
-          </section>
-          </article>
-          <br />
-          <article className="imgContainerTwo">
-          <section className="morPhoto">
-          <img src={morainePhoto} alt="Moraine Lake" className="morainePhoto" height="200px" width="300px" />
-          <p>Moraine Lake, Canada</p>
-          </section>
-          <section className="swePhoto">
-          <img src={swedenPhoto} alt="Malmo, Sweden" className="swedenPhoto" height="200px" width="300px" />
-          <p>Malmo, Sweden</p>
-          </section>
-          <section className="wasPhoto">
-          <img src={washingtonPhoto} alt="Washington, D.C." className="washingtonPhoto"  height="200px" width="300px" />
-          <p>Washington, USA</p>
-          </section>
+          ))}
+          
           </article>
           </main>
           <br />
         <hr />
 
-        <h4>Add New Portfolio Item</h4>
-        <label>Location Name</label>
-        <input type="text" />
-        <label>Image</label>
-        <input type="file"/>
-        <button>Add To Portfolio</button>
+       
         
 
 

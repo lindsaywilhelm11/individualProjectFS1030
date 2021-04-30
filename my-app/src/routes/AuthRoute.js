@@ -31,22 +31,8 @@ router.get("/api/auth", (req, res) => {
     } catch(err){
         console.log(err)
     }
-    // db.query('SELECT * FROM test', function (error, results, fields){
-    //     if (error) throw error;
-    //     console.log("finished retrieval");
-    //     return res.status(200).send(results);
-    // })
 })
 
-//use to add users through Postman with encrypted password. *Needed to use logIn later*.
-router.post('/api/users', async (req, res) => {
-    req.body.password = await argon2.hash(req.body.Password)
-    const query = `INSERT INTO user VALUES ('${req.body.CareProviderID}', '${req.body.SuperAdminID}', '${req.body.Username}', "${req.body.Password}");`
-    await db.query(query,function(error, results, fields){
-        if (error) throw error
-        return res.status(201).send(results)
-    })
-    
-})
 
-export default router
+
+export default router;
