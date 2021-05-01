@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
  
 const Portfolio = () => {
@@ -7,7 +6,7 @@ const Portfolio = () => {
 
     useEffect(() => {
       async function fetchData() {
-        const res = await fetch("http://localhost:3001/api/personal_site");
+        const res = await fetch("http://localhost:3001/api/portfolio");
         res
           .json()
           .then((res) => setPortfolio(res))
@@ -36,14 +35,13 @@ const Portfolio = () => {
         <br />
         <p className="portfolioContent">Please enjoy some of my photography instead.</p>
         <main>
-          <article className="imgContainerOne">
+          <article className="imgContainer">
           {portfolio.map((portfolio) => (
             <section className="ediPhoto" key={portfolio.portfolioID}>
               <p>{portfolio.title}</p>
-              <p>{portfolio.publish_date}</p>
-              <img src={portfolio.image} alt={portfolio.title} className="edinburghPhoto" width="300px" height="200px" />
+              <img src={portfolio.image} alt={portfolio.title} width="300px" height="200px" />
               <p>{portfolio.description}</p>
-          </section>
+              </section>
           ))}
           
           </article>

@@ -9,21 +9,21 @@ const router = express.Router();
 
 router.get("/api/auth", (req, res) => {
     try{
-        const {username, password, ID} = req.body
+        const {username, password, adminID} = req.body
 
         if (!username || !password){
             return res.status(401).json({message: "incorrect credentials provided"})
         }
 
-        db.query('SELECT * FROM admin_login WHERE Username = ?', [username], async function(error, results, fields) {
+        db.query('SELECT * FROM `personal_site`.`admin_login` WHERE Username = ?', [username], async function(error, results, fields) {
             if (error) throw error
             if(!results || !(await argon2.verify(results[0].password, password))){
                 return res.status(401).json({message: "incorrect credentials provided"})
             } else {
                 const token = jwt.sign({username}, process.env.JWT_SECRET, {expiresIn: '5m'})
                 console.log("Logged in as: " + username);
-                if(ID){
-                    console.log(username + " is also a SuperAdmin");
+                if(adminID){
+                    console.log(username + " is an Admin");
                 }
                 return res.send({token});          
             }

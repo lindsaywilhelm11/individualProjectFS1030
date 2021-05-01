@@ -83,7 +83,7 @@ a.button:hover{
       text-align: center;
   }
 
-  .imgContainerOne{
+  .imgContainer{
       Display: flex;
       Height: 40vh;
       Width: 100vw; 

@@ -5,12 +5,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './components/Home';
 import About from './components/About';
-import Portfolio from './components/Portfolio';
-import Resume from './components/Resume';
+import Portfolio from './components/portfolio/Portfolio';
+import Resume from './components/resume/Resume';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import Navigation from './components/Navigation';
 import Login from './components/Login';
+import PortfolioAdd from './components/portfolio/PortfolioAdd';
+import OnePortfolio from './components/portfolio/OnePortfolio';
 
 
 export class App extends Component {
@@ -47,6 +49,8 @@ export class App extends Component {
              <Route path="/" component={Home} exact/>
              <Route path="/about" component={About}/>
              <Route path="/portfolio" component={Portfolio}/>
+             <Route path="/portfolioadd" component={PortfolioAdd} />
+             <Route path="/portfolioone/:portfolioID" component={OnePortfolio} />
              <Route path="/resume" component={Resume}/>
              <Route path="/contact" component={Contact}/>
              <Route path="/login" component={Login}/>

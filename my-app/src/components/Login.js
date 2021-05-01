@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect, useHistory, useLocation } from 'react-router-dom'
-import { LoginContext } from './sub-components/LoginContext';
-import axios from 'axios';
 
 
 function Login() {
@@ -13,7 +11,7 @@ function Login() {
 
   const handleSubmit = async event => {
       event.preventDefault()
-      const response = await fetch('http://localhost:3001/auth', {
+      const response = await fetch('http://localhost:3001/api/auth', {
           method: 'POST',
           headers: {
               'Accept': "application/json",
