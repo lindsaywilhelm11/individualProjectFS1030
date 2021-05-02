@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 const OnePortfolio = (props) => {
     console.log(props);
-    let portfolioID = props.match.params.portfolioID
+    let portfolioID = props.match.params.portfolioID;
     const [portfolio, setPortfolio] = useState([]);
     const [form, setForm] = useState({display: "none"});
     const [portfolioInfo, setPortfolioInfo] = useState({ title: "", image: "", description: "" });
@@ -72,14 +72,14 @@ const OnePortfolio = (props) => {
               </section>
           ))}
     
-        <form onSubmit={(e) => handleEditSubmit (e, portfolio.portfolioID)} style={form}>
+        <form onSubmit={(e) => handleEditSubmit (e, portfolioInfo.portfolioID)} style={form}>
             <label>Title</label>
-            <input type="text" name="title" value={portfolio.title} onChange={handleChange} />
+            <input type="text" name="title" value={portfolioInfo.title} onChange={handleChange} />
             <label>Image URL</label>
-            <input type="url" name="image" value={portfolio.image} onChange={handleChange} />
+            <input type="url" name="image" value={portfolioInfo.image} onChange={handleChange} />
             <label>Description</label>
-            <input type="text" name="description" value={portfolio.description} onChange={handleChange} />
-            <button type="submit" value="Submit">Submit Edit</button>
+            <input type="text" name="description" value={portfolioInfo.description} onChange={handleChange} />
+            <button type="submit">Submit Edit</button>
     </form>
     </article>
     

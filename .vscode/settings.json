@@ -12,6 +12,19 @@
             "database": "personal_site",
             "username": "root",
             "password": "!1093Sammy!"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3001,
+            "driver": "MySQL",
+            "name": "personal_site",
+            "database": "personal_site",
+            "username": "root",
+            "password": "!1093Sammy"
         }
     ]
 }

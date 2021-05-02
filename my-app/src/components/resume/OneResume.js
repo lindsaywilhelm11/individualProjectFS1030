@@ -1,84 +1,96 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 
-const OnePortfolio = (props) => {
+const OneResume = (props) => {
     console.log(props);
-    let portfolioID = props.match.params.portfolioID
-    const [portfolio, setPortfolio] = useState([]);
+    let resumeID = props.match.params.resumeID
+    const [resume, setResume] = useState([]);
     const [form, setForm] = useState({display: "none"});
-    const [portfolioInfo, setPortfolioInfo] = useState({ title: "", image: "", description: "" });
+    const [resumeInfo, setResumeInfo] = useState({ company: "", position: "", location: "", start_date: "", end_date: "", description: "", type: "" });
     const history = useHistory();
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`http://localhost:3001/api/portfolio/${portfolioID}`);
-            res.json().then((res) => setPortfolio(res));
+            const res = await fetch(`http://localhost:3001/api/resume/${resumeID}`);
+            res.json().then((res) => setResume(res));
         }
         fetchData();
-    }, [portfolioID]);
+    }, [resumeID]);
 
     
-    const handleDelete = (event, portfolioID) => {
+    const handleDelete = (event, resumeID) => {
         event.preventDefault();
-        console.log(portfolioID);
+        console.log(resumeID);
 
-        fetch(`/api/portfolio/${portfolioID}`, {
+        fetch(`/api/resume/${resumeID}`, {
             method: "delete",
             headers: {
-                Accept: "application/json",
+                "Accept": "application/json",
                 "Content-Type": "application/json",
             },
         }).then((response) => response.json());
-        history.push("/portfolio");
+        history.push("/resume");
     };
 
-    const handleEdit = (event, portfolioInfo) => {
+    const handleEdit = (event, resumeInfo) => {
         event.preventDefault();
-        console.log(portfolioInfo);
+        console.log(resumeInfo);
         setForm({ display: "block" });
-        setPortfolioInfo(portfolioInfo);
+        setResumeInfo(resumeInfo);
     };
 
     const handleChange = (event) => { 
-        setPortfolioInfo((prevState) => ({
+        setResumeInfo((prevState) => ({
             ...prevState, 
             [event.target.name]: event.target.value,
         }));
     };
 
-    const handleEditSubmit = (event, portfolioID) => {
+    const handleEditSubmit = (event, resumeID) => {
         event.preventDefault();
-        console.log(portfolioID);
-        fetch(`/api/portfolio/${portfolioID}`, {
+        console.log(resumeID);
+        fetch(`/api/resume/${resumeID}`, {
             method: "put",
             headers: {
-                Accept: "application/json",
+                "Accept": "application/json",
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(portfolioInfo)
+            body: JSON.stringify(resumeInfo)
         }).then((response) => response.json());
-        history.push("/portfolio");
+        history.push("/resume");
     }
 
     return(
      <article>
-            {portfolio.map((portfolio) => (
-            <section key={portfolio.portfolioID}>
-              <p>{portfolio.title}</p>
-              <img src={portfolio.image} alt={portfolio.title} width="300px" height="200px" />
-              <p>{portfolio.description}</p>
-              <button onClick={(e) => {handleDelete(e, portfolio.portfolioID)}}>Delete Portfolio Item</button>
-              <button onClick={(e) => handleEdit(e, portfolioInfo)}>Edit Portfolio Item</button>
+            {resume.map((resume) => (
+            <section key={resume.resumeID}>
+              <p><b>Company: </b>{resume.company}</p>
+              <p><b>Position: </b>{resume.position}</p>
+              <p><b>Location: </b>{resume.location}</p>
+              <p><b>Start Date: </b>{resume.start_date}</p>
+              <p><b>End Date: </b>{resume.end_date}</p>
+              <p><b>Description: </b>{resume.description}</p>
+              <p><b>Type: </b>{resume.type}</p>
+              <button onClick={(e) => {handleDelete(e, resume.resumeID)}}>Delete Resume Item</button>
+              <button onClick={(e) => handleEdit(e, resumeInfo)}>Edit Resume Item</button>
               </section>
           ))}
     
-        <form onSubmit={(e) => handleEditSubmit (e, portfolio.portfolioID)} style={form}>
-            <label>Title</label>
-            <input type="text" name="title" value={portfolio.title} onChange={handleChange} />
-            <label>Image URL</label>
-            <input type="url" name="image" value={portfolio.image} onChange={handleChange} />
+        <form onSubmit={(e) => handleEditSubmit (e, resume.resumeID)} style={form}>
+            <label>Company</label>
+            <input type="text" name="company" value={resume.company} onChange={handleChange} />
+            <label>Position</label>
+            <input type="text" name="position" value={resume.position} onChange={handleChange} />
+            <label>Location</label>
+            <input type="text" name="location" value={resume.location} onChange={handleChange} />
+            <label>Start Date</label>
+            <input type="text" name="start_date" value={resume.start_date} onChange={handleChange} />
+            <label>End Date</label>
+            <input type="text" name="end_date" value={resume.end_date} onChange={handleChange} />
             <label>Description</label>
-            <input type="text" name="description" value={portfolio.description} onChange={handleChange} />
+            <input type="text" name="description" value={resume.description} onChange={handleChange} />
+            <label>Type</label>
+            <input type="text" name="type" value={resume.type} onChange={handleChange} />
             <button type="submit" value="Submit">Submit Edit</button>
     </form>
     </article>
@@ -90,4 +102,4 @@ const OnePortfolio = (props) => {
 
 
 
-export default OnePortfolio;
+export default OneResume;

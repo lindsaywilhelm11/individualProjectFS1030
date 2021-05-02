@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
@@ -13,53 +13,48 @@ import Navigation from './components/Navigation';
 import Login from './components/Login';
 import PortfolioAdd from './components/portfolio/PortfolioAdd';
 import OnePortfolio from './components/portfolio/OnePortfolio';
+import ResumeAdd from './components/resume/ResumeAdd';
+import OneResume from './components/resume/OneResume';
+import AdminPage from './components/admin/AdminPage';
+import { LoginContext } from './components/sub-components/LoginContext';
 
 
-export class App extends Component {
+const App = () => {
 
-  state = {
-    data: null
-  };
+  const [username, setUsername] = useState("");
+  const [token, setToken] = useState("");
+  
 
-  componentDidMount() {
-      // Call our fetch function below once the component mounts
-    this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
-      .catch(err => console.log(err));
-  }
-    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-  callBackendAPI = async () => {
-    const response = await fetch("/api/personal_site");
-    const body = await response.json();
 
-    if (response.status !== 200) {
-      throw Error(body.message) 
-    }
-    return body;
-  };
-
-  render() {
-    return (   
+    return (
       
-      
+      <LoginContext.Provider
+         value={{
+           username,
+           setUsername,
+           token,
+           setToken,
+          }}
+      >  
        <BrowserRouter>
           <Navigation />
             <Switch>
-            
              <Route path="/" component={Home} exact/>
              <Route path="/about" component={About}/>
              <Route path="/portfolio" component={Portfolio}/>
              <Route path="/portfolioadd" component={PortfolioAdd} />
              <Route path="/portfolioone/:portfolioID" component={OnePortfolio} />
              <Route path="/resume" component={Resume}/>
+             <Route path="/resumeadd" component={ResumeAdd} />
+             <Route path="/resumeone/:resumeID" component={OneResume} />
              <Route path="/contact" component={Contact}/>
              <Route path="/login" component={Login}/>
+             <Route path="/adminpage" component={AdminPage}/>
             <Route component={Error}/>
-            <p>{this.state.data}</p>
            </Switch>
-      </BrowserRouter>
+        </BrowserRouter>
+        </LoginContext.Provider>
     );
-  }
-}
+    };
 
 export default App;

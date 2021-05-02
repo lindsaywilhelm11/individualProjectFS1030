@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { LoginContext } from "./Context";
 
-const LogoutNav = (props) => {
+const Nav = (props) => {
   const { adminID, setAdminID } = useContext(LoginContext)
   
   const logout = () => {
-    setAdminID("");
+    setAdminID("")
   }
   
   return (
@@ -17,8 +17,8 @@ const LogoutNav = (props) => {
         </li>
         {adminID ?  
           <>
-            <li className={props.adminpanel}>
-              <NavLink to="/adminpanel">Admin Panel</NavLink>
+            <li className={props.adminpage}>
+              <NavLink to="/adminpage">Admin Page</NavLink>
             </li>
           </>      
         : null}
@@ -27,4 +27,4 @@ const LogoutNav = (props) => {
   );
 };
 
-export default LogoutNav;
+export default Nav;
